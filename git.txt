@@ -1,0 +1,41 @@
+****************************      GENERAL CHECK     ****************************
+git status
+git branch
+git diff --cached --stat
+
+https://devconnected.com/how-to-remove-files-from-git-commit/
+
+****************************      NEW SETUP     ****************************
+# login
+git clone https://<UserName>:<MYTOKEN>@github.com/<UserName>/<RepoName>.git --branch=<BranchName> <localBranchName>
+
+git config --global user.name "Your Name"
+git config --global user.email "Your Email"
+
+# After cloning
+git remote set-url origin https://<UserName>:<MYTOKEN>@github.com/<UserName>/<RepoName>.git
+
+
+****************************      MAINTENANCE     ****************************
+git rm path/to/file
+git rm --cached path/to/file
+
+git fetch --all
+git pull --all
+
+****************************      REBASE, MERGE     ****************************
+
+git add --ignore-errors -A -- fileName
+
+## pull a particular file from another branch just do
+git checkout branch1 -- filename
+
+#### REBASE
+git rebase {target_branch}
+git rebase origin/main
+git rebase --Xtheirs origin/main
+
+git rebase --interactive --no-autosquash <CommitGUID>
+
+# abort changes
+git -c credential.helper= -c core.quotepath=false -c log.showSignature=false checkout HEAD -- data/configs/coco_simple.yaml
