@@ -1,0 +1,11 @@
+adb devices -l
+# to go into the device cmd
+adb shell
+
+am start -n com.<AppName>.apps.dmm
+
+adb shell monkey -p com.<AppName>.apps.dmm -v 500
+
+
+./adb root
+./adb shell reboot

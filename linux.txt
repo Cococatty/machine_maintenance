@@ -1,0 +1,166 @@
+***********		System		***********
+
+https://www.cyberciti.biz/faq/how-to-check-running-process-in-linux-using-command-line/
+
+# show processes
+ps aux -a | grep
+
+kill -9 ${pid}
+
+
+sudo nano ~/.bash_aliases
+source ~/.bash_aliases
+
+
+# build symbolic link
+ln -s [target file] [Symbolic filename]
+
+
+# shared dir
+vmhgfs-fuse - /mnt/hgfs/vm-shared
+
+cd /mnt/hgfs
+
+mount -t vmhgfs .host:/vm-shared /home/catty/shared
+# unknow filesystem
+/usr/bin/vmhgfs-fuse /mnt
+/usr/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o subtype=vmhgfs-fuse,allow_other
+
+https://www.howtogeek.com/414634/how-to-mount-and-unmount-storage-devices-from-the-linux-terminal/
+
+sudo mount -t cifs /mnt/win_share
+/usr/bin/vmhgfs-fuse /mnt
+
+mount -t vmhgfs .host:/mysharedfolder /mnt/hgfs
+
+sudo umount /mnt/vm-niuniu
+
+https://www.cyberciti.biz/faq/creating-soft-link-or-symbolic-link/
+
+ln -s {source-dir-name} {symbolic-dir-name}
+
+
+## count files
+ls outputs/exp4/labels/ | wc -l
+
+## COUNT BY DIR
+for i in */ .*/ ; do 
+    echo -n $i": " ; 
+    (find "$i" -type f | wc -l) ; 
+done
+
+
+## network sign disappeared
+sudo nmcli networking off
+sudo nmcli networking on
+
+
+## update default editor
+sudo update-alternatives --install /usr/bin/gnome-text-editor gnome-text-editor /opt/sublime_text/sublime_text 100
+sudo update-alternatives --config gnome-text-editor
+
+
+## install tar.gz
+sudo tar xzvf
+
+./configure
+make
+sudo make install
+
+
+
+## memory check
+https://askubuntu.com/questions/1224/how-do-i-determine-the-total-size-of-a-directory-folder-from-the-command-line
+
+du -h
+ls -shR
+
+du -h --max-depth=3 | sort -h
+
+
+***********		BASH		***********
+https://www.cyberciti.biz/faq/bash-check-if-file-does-not-exist-linux-unix/
+https://devconnected.com/how-to-check-if-file-or-directory-exists-in-bash/
+
+
+
+
+***********    HW    ***********
+
+# show hardware
+sudo lshw -C display
+
+
+
+***********		Lost Files		***********
+
+To use TestDisk or PhotoRec with this disk image, start a Terminal and run
+   testdisk image.dd
+or photorec image.dd
+
+
+# open pdf
+gvfs-open file_name
+
+
+ 
+***********    Zipped    ***********
+
+# check zip dir hierarchy 
+
+unzip -l foo.zip "*/" 
+
+
+### TAR
+tar -xvf 
+ 
+
+***********    Reg Find and Action *********** 
+
+find . -name "yolo*.pt" -exec mv {} data/weight_files \; 
+
+
+
+***********    Rename files in bulk *********** 
+
+for i in face*; do mv ${i} has_${i/CL}; done
+
+# sequentially
+ls -v | cat -n | while read n f; do mv -n "$f" "car$n.jpg"; done
+
+# rename dirs sequentially
+ls -v | cat -n | while read n f; do mv "$f" "$n"; done
+ls -v | cat -n | while read n f; do mv "$f" "$n"; done
+
+
+***********    Remove space in files names in bulk *********** 
+for f in *; do mv "$f" `echo $f | tr ' ' '_'`; done
+
+
+
+****************************      IMAGE MANIPULATIONS     ****************************
+## ImageMagick
+# https://www.scivision.dev/image-flip-command-line/
+
+# Vertical flip the image by:
+convert in.png -flip out.png
+
+# Horizontal flip the image by:
+convert in.png -flop out.png
+
+
+
+****************************      VIDEO MANIPULATIONS     ****************************
+###########    ffmpeg
+
+https://shotstack.io/learn/use-ffmpeg-to-trim-video/
+https://stackoverflow.com/questions/18444194/cutting-the-videos-based-on-start-and-end-time-using-ffmpeg
+
+
+ffmpeg -i [input_file] -ss [start_seconds] -t [duration_seconds] [output_file]
+
+# use FFmpeg cut mp4 video without re-encoding
+ffmpeg -i source.mp4 -ss 00:00:05 -t 00:00:10 -c copy cut_video.mp4
+
+# use FFmpeg cut mp4 video with re-encoding
+ffmpeg -i source.mp4 -ss 00:00:05 -t 00:00:10 -async 1 -strict -2 cut_video.mp4

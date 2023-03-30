@@ -1,0 +1,31 @@
+****************************      RUN     ****************************
+
+docker run -it -v <LocalDir>:/<MappedDir> <ImageName>:<Version>
+
+
+****************************      BUILD     ****************************
+
+docker build --file <path to Dockerfile> --tag <TagName> .
+
+docker_name="adas-tests"
+cd && docker run -it --rm -v $(pwd)/<local dir name>:/<dir in docker> --entrypoint bash ${docker_name}
+
+docker run -it -v $(pwd)/<local dir name>:/<dir in docker> <docker_name>
+
+
+# save changes
+docker commit {docker} {name}
+
+
+## clear all
+
+docker volume rm $(docker volume ls -qf dangling="true")
+
+## hard clean
+docker system prune -a
+
+## clear building cache
+docker builder prune
+
+
+https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes

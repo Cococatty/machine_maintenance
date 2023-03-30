@@ -1,7 +1,6 @@
 *********************		GREENSHOT		*********************
 
 
-
 *********************		misc		*********************
 
 ## alias
@@ -17,13 +16,3 @@ Get-Alias -Name list
 *******
 
 windows-android-edgeai
-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
-
-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
-
-
-3088.72
-
-brightviolet208
-
-
