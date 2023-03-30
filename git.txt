@@ -15,8 +15,6 @@ git config --global user.email "Your Email"
 # After cloning
 git remote set-url origin https://<UserName>:<MYTOKEN>@github.com/<UserName>/<RepoName>.git
 
-git remote set-url origin https://carinazh-eroad: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@github.com/eroad/video-intelligence-adas
-
 
 ****************************      MAINTENANCE     ****************************
 git rm path/to/file
