@@ -39,3 +39,13 @@ git rebase --interactive --no-autosquash <CommitGUID>
 
 # abort changes
 git -c credential.helper= -c core.quotepath=false -c log.showSignature=false checkout HEAD -- data/configs/coco_simple.yaml
+
+****************************      CREATE REPO     ****************************
+# from local
+# make the required directory
+git init
+git remote add main https://<user name>:<Auth Key>@github.com/<user name>/<repo name>.git
+
+git push -u main main
+
+# alternatively, create repo on the web
