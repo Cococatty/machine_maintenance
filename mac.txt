@@ -1,0 +1,75 @@
+***********		DEV ENVIRONMENT SETUP		***********
+# install pip
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
+
+# evaluate installation
+pip3 --version
+pip --version
+
+
+# update PIP on a Mac
+python3 -m pip install –upgrade pip
+
+# install a specific version of pip
+pip install --upgrade pip==1.2.1
+
+# uninstall any previous installation of pip
+pip uninstall pip
+# OR
+sudo apt-get remove python-pip
+
+
+# https://stackoverflow.com/questions/44455001/how-to-change-pip3-command-to-be-pip
+
+# use pip3 using the alias pip by adding alias to the .bashrc file
+alias pip=pip3
+
+# add a symlink named pip to your $PATH, which points to the pip3 binary
+
+# if ~/.bashrc is not available on macOS, inputting below in ~/.zprofile file
+alias pip=pip3
+
+# setup auto-complete
+# auto-complete for mac
+
+# auto-complete for git
+# credit: https://oliverspryn.blog/adding-git-completion-to-zsh-60f3b0e7ffbc
+# Create the folder structure
+mkdir -p ~/.zsh
+cd ~/.zsh
+
+# Download the scripts
+curl -o git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o _git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
+# put the following commands in ~/.zshrc
+# Load Git completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
+
+# exit then run below to remove cache
+rm ~/.zcompdump
+
+# reload terminal and then viola!
+
+
+***********		VIRTUAL ENVIRONMENT		***********
+# virtualenv
+pip install virtualenv
+
+# activate venv
+cd my-project/
+virtualenv venv
+
+virtualenv venv --system-site-packages
+source venv/bin/activate
+pip install <package>
+deactivate
+
+# virtualenvwrapper
+# https://virtualenvwrapper.readthedocs.io/en/latest/install.html
+
+pip install virtualenvwrapper
