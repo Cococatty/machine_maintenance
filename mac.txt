@@ -1,47 +1,66 @@
+***********		DEV ENVIRONMENT SETUP		***********
 # install pip
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-Step 2: Now execute the downloaded file using the below command
-
 python3 get-pip.py
 
-
+# evaluate installation
 pip3 --version
 pip --version
 
- 
 
-How to Update PIP on a Mac
-You can use the following command in your terminal to upgrade your pip. 
-
+# update PIP on a Mac
 python3 -m pip install –upgrade pip
-How to install a specific version of pip
-To install a specific version you can enter the following version number to install the specific version.
 
+# install a specific version of pip
 pip install --upgrade pip==1.2.1
-How to uninstall any previous installation of pip
-You can use one of the commands to uninstall the pip command based on your system.
 
+# uninstall any previous installation of pip
 pip uninstall pip
+# OR
 sudo apt-get remove python-pip
 
 
 # https://stackoverflow.com/questions/44455001/how-to-change-pip3-command-to-be-pip
 
-You can use pip3 using the alias pip by adding alias to your .bashrc file.
-
+# use pip3 using the alias pip by adding alias to the .bashrc file
 alias pip=pip3
-or by adding a symlink named pip to your $PATH, which points to the pip3 binary.
 
-If there is no ~/.bashrc in your home directory on macOS, inputting
+# add a symlink named pip to your $PATH, which points to the pip3 binary
 
+# if ~/.bashrc is not available on macOS, inputting below in ~/.zprofile file
 alias pip=pip3
-in your ~/.zprofile file has the same effect.
+
+# setup auto-complete
+# auto-complete for mac
+
+# auto-complete for git
+# credit: https://oliverspryn.blog/adding-git-completion-to-zsh-60f3b0e7ffbc
+# Create the folder structure
+mkdir -p ~/.zsh
+cd ~/.zsh
+
+# Download the scripts
+curl -o git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o _git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
+# put the following commands in ~/.zshrc
+# Load Git completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
+
+# exit then run below to remove cache
+rm ~/.zcompdump
+
+# reload terminal and then viola!
 
 
 ***********		VIRTUAL ENVIRONMENT		***********
 # virtualenv
 pip install virtualenv
 
+# activate venv
 cd my-project/
 virtualenv venv
 
