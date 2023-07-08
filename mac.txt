@@ -1,0 +1,56 @@
+# install pip
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+Step 2: Now execute the downloaded file using the below command
+
+python3 get-pip.py
+
+
+pip3 --version
+pip --version
+
+ 
+
+How to Update PIP on a Mac
+You can use the following command in your terminal to upgrade your pip. 
+
+python3 -m pip install –upgrade pip
+How to install a specific version of pip
+To install a specific version you can enter the following version number to install the specific version.
+
+pip install --upgrade pip==1.2.1
+How to uninstall any previous installation of pip
+You can use one of the commands to uninstall the pip command based on your system.
+
+pip uninstall pip
+sudo apt-get remove python-pip
+
+
+# https://stackoverflow.com/questions/44455001/how-to-change-pip3-command-to-be-pip
+
+You can use pip3 using the alias pip by adding alias to your .bashrc file.
+
+alias pip=pip3
+or by adding a symlink named pip to your $PATH, which points to the pip3 binary.
+
+If there is no ~/.bashrc in your home directory on macOS, inputting
+
+alias pip=pip3
+in your ~/.zprofile file has the same effect.
+
+
+***********		VIRTUAL ENVIRONMENT		***********
+# virtualenv
+pip install virtualenv
+
+cd my-project/
+virtualenv venv
+
+virtualenv venv --system-site-packages
+source venv/bin/activate
+pip install <package>
+deactivate
+
+# virtualenvwrapper
+# https://virtualenvwrapper.readthedocs.io/en/latest/install.html
+
+pip install virtualenvwrapper
